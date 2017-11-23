@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.boot.user.mapper.UsersMapper">
-  <resultMap id="BaseResultMap" type="com.boot.user.model.Users">
+<mapper namespace="com.boot.user.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.boot.user.model.User">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from users
+    from user
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from users
+    delete from user
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.boot.user.model.Users">
-    insert into users (id, name, email, 
+  <insert id="insert" parameterType="com.boot.user.model.User">
+    insert into user (id, name, email, 
       phone)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.boot.user.model.Users">
-    insert into users
+  <insert id="insertSelective" parameterType="com.boot.user.model.User">
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -57,8 +57,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.boot.user.model.Users">
-    update users
+  <update id="updateByPrimaryKeySelective" parameterType="com.boot.user.model.User">
+    update user
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -72,8 +72,8 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.boot.user.model.Users">
-    update users
+  <update id="updateByPrimaryKey" parameterType="com.boot.user.model.User">
+    update user
     set name = #{name,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR}

@@ -1,6 +1,6 @@
 package com.boot.user.model;
 
-public class Users {
+public class User {
     private String id;
 
     private String name;
