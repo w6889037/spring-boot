@@ -1,5 +1,6 @@
 package com.boot;
 
+import com.boot.user.model.User;
 import com.boot.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ public class HomeController {
 
     @RequestMapping("/home")
     public String home(){
-        return "home";
+        userService.insert(new User("aaa","张三","a@163.com","15656598978"));
+        return "home page";
     }
 }

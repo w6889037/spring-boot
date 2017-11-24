@@ -10,16 +10,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * Created by xianchun.hu on 11/23/2017.
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//public class UserMapperTest {
-//
-//    @Autowired
-//    private UserMapper userMapper;
-//
-//    @Test
-//    public void testInsert() throws Exception {
-//        userMapper.insert(new User("1111","呵呵","a@163.com","156985698569"));
-//    }
-//
-//}
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserMapperTest {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Test
+    public void testInsert() throws Exception {
+        userMapper.insert(new User("1111","呵呵","a@163.com","156985698569"));
+    }
+
+}
