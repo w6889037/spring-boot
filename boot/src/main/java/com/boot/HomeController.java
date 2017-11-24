@@ -17,7 +17,7 @@ public class HomeController {
 
     @RequestMapping("/home")
     public String home(){
-        userService.insert(new User("aaa","张三","a@163.com","15656598978"));
+        userService.insert(new User("bbbb","张三","a@163.com","15656598978"));
         return "home page";
     }
 }
