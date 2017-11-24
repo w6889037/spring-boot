@@ -19,7 +19,7 @@ public class UserMapperTest {
 
     @Test
     public void testInsert() throws Exception {
-        userMapper.insert(new User("1111","呵呵","a@163.com","156985698569"));
+//        userMapper.insert(new User("1112","呵呵","a@163.com","156985698569"));
     }
 
 }

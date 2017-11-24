@@ -6,6 +6,8 @@ import com.boot.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by xianchun.hu on 11/23/2017.
  */
@@ -18,5 +20,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void insert(User user) {
         userMapper.insert(user);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userMapper.getAll();
     }
 }

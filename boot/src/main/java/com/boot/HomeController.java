@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by xianchun.hu on 11/23/2017.
  */
@@ -17,7 +19,8 @@ public class HomeController {
 
     @RequestMapping("/home")
     public String home(){
-        userService.insert(new User("bbbb","张三","a@163.com","15656598978"));
+        List<User> users = userService.getAll();
+        System.out.println(users);
         return "home page";
     }
 }
