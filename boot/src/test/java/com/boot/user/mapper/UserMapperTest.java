@@ -22,7 +22,7 @@ public class UserMapperTest {
 
     @Test
     public void testInsert() throws Exception {
-        userService.insert(new User("1113","呵呵","a@163.com","156985698569"));
+//        userService.insert(new User("1113","呵呵","a@163.com","156985698569"));
     }
 
     @Test
