@@ -9,7 +9,18 @@ import java.util.List;
  */
 public interface UserService {
 
+    List<User> getAll();
+
+    User selectByPrimaryKey(String id);
+
+    void deleteByPrimaryKey(String id);
+
     void insert(User user);
 
-    List<User> getAll();
+    void insertSelective(User user);
+
+    void updateByPrimaryKeySelective(User user);
+
+    void updateByPrimaryKey(User user);
+
 }

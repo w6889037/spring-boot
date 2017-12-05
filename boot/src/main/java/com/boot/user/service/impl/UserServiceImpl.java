@@ -23,7 +23,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void insertSelective(User user) {
+        userMapper.insertSelective(user);
+    }
+
+    @Override
+    public void updateByPrimaryKeySelective(User user) {
+        userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
+    public void updateByPrimaryKey(User user) {
+        userMapper.updateByPrimaryKey(user);
+    }
+
+    @Override
     public List<User> getAll() {
         return userMapper.getAll();
+    }
+
+    @Override
+    public User selectByPrimaryKey(String id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void deleteByPrimaryKey(String id) {
+        userMapper.deleteByPrimaryKey(id);
     }
 }
