@@ -3,10 +3,7 @@ package com.boot.user.controller;
 import com.boot.user.model.User;
 import com.boot.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +24,12 @@ public class UserController {
 
     @RequestMapping(value = "/findUser/{userId}", method = RequestMethod.GET)
     public User findUser(@PathVariable("userId") String userId){
+        User user = userService.selectByPrimaryKey(userId);
+        return user;
+    }
+
+    @RequestMapping(value="/findUser2", method = RequestMethod.GET)
+    public User findUser2(@RequestParam("userId") String userId){
         User user = userService.selectByPrimaryKey(userId);
         return user;
     }
