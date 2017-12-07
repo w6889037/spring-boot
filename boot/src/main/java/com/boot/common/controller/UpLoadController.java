@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -19,8 +20,9 @@ public class UpLoadController {
     private static Logger LOG = Logger.getLogger(UpLoadController.class);
 
     @RequestMapping(value = "/upLoadPage", method = RequestMethod.GET)
-    public String goToUpLoadPage(Model model) {
-        model.addAttribute("aaa","bbb");
+    public String goToUpLoadPage(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
+        session.setAttribute("aaa", "AAA");
         return "upLoad";
     }
 
