@@ -22,8 +22,8 @@ public class SchedulingConfig {
      * 5．月份（1–12或JAN–DEC）
      * 6．年份（1970–2099）
      */
-    @Scheduled(cron = "0/3 * * * * *")
+    @Scheduled(cron = "0 0/3 * * * *")
     public void schedule(){
-        LOG.info("每三秒执行一次......");
+        LOG.info("每三分钟执行一次......");
     }
 }
