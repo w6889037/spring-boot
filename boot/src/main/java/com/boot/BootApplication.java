@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @MapperScan("com.boot.*.mapper")
-@ServletComponentScan
+@ServletComponentScan/**允许使用servlet过滤器和监听器*/
 @SpringBootApplication
 public class BootApplication {
 
