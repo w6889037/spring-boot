@@ -6,6 +6,7 @@ import com.boot.user.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +21,8 @@ public class UserController {
     @PostMapping(value = "/register")
     public String register(User user){
         user.setId(UUIDUtil.getUUID());
+        user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
         userService.insert(user);
         return "login";
     }

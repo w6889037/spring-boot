@@ -1,26 +1,19 @@
 package com.boot.user.model;
 
-import org.hibernate.validator.constraints.Email;
+import java.util.Date;
 
 public class User {
     private String id;
 
     private String name;
 
-    @Email
     private String email;
 
     private String phone;
 
-    public User() {
-    }
+    private Date createTime;
 
-    public User(String id, String name, String email, String phone) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-    }
+    private Date updateTime;
 
     public String getId() {
         return id;
@@ -54,13 +47,19 @@ public class User {
         this.phone = phone;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}' + "\n\r";
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

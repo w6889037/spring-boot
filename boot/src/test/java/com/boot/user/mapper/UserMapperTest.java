@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,8 +40,10 @@ public class UserMapperTest {
     @Test
     public void testUpdate(){
         User u = userService.selectByPrimaryKey("1111");
-        u.setEmail("1111@163.com");
-        userService.updateByPrimaryKey(u);
+        if(u != null){
+            u.setEmail("1111@163.com");
+            userService.updateByPrimaryKey(u);
+        }
     }
 
     @Test
