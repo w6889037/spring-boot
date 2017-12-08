@@ -1,14 +1,21 @@
 package com.boot.user.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.util.Date;
 
 public class User {
     private String id;
 
+    @NotEmpty
     private String name;
 
+    @NotEmpty
+    @Email(message = "邮箱格式不匹配")
     private String email;
 
+    @NotEmpty
     private String phone;
 
     private Date createTime;

@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
-    login page
+    <form action="/boot/register" method="post">
+        name:<input type="text" name="name"/><br/>
+        email:<input type="text" name="email"/><br/>
+        phone:<input type="tel" name="phone"/><br/>
+        <input type="submit" value="提交"/>
+        <!--<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</p>-->
+    </form>
 </body>
 </html>
