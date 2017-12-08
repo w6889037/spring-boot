@@ -2,6 +2,7 @@ package com.boot.user.controller;
 
 import com.boot.user.model.User;
 import com.boot.user.service.UserService;
+import com.boot.user.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,13 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @PostMapping(value = "/register")
+    public String register(User user){
+        user.setId(UUIDUtil.getUUID());
+        userService.insert(user);
+        return "login";
+    }
 
     @RequestMapping(value = "/findAllUsers", method = RequestMethod.GET)
     public List<User> findAllUsers(){

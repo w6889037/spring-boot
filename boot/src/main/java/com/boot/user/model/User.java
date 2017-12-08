@@ -1,10 +1,13 @@
 package com.boot.user.model;
 
+import org.hibernate.validator.constraints.Email;
+
 public class User {
     private String id;
 
     private String name;
 
+    @Email
     private String email;
 
     private String phone;
