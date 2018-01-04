@@ -1,0 +1,13 @@
+<html>
+<body>
+亲爱的${toUserName}，你好！
+
+    ${message}
+<br>
+祝：开心！
+    ${fromUserName}
+    ${time}
+    <img src="${baseUrl}/img/email.jpg">
+    <br>
+</body>
+</html>
