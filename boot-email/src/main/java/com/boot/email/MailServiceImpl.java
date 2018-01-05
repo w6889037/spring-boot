@@ -189,6 +189,7 @@ public class MailServiceImpl implements MailService {
             context.put("fromUserName","hehehe");
             context.put("time", DateFormatUtils.format(new Date(),"yyyy-MM-dd hh:mm:ss"));
             context.put("baseUrl", baseUrl);
+            context.put("ctx",context);
 
             StringWriter writer = new StringWriter();
             velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
