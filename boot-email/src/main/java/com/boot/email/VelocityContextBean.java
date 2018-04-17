@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 /**
  * Created by xianchun.hu on 1/3/2018.
  */
-@Component
+//@Component
 public class VelocityContextBean extends VelocityContext {
 }

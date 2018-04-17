@@ -3,10 +3,13 @@ package com.boot.email;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.log4j.Logger;
+import org.apache.velocity.VelocityContext;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -27,6 +30,7 @@ import java.util.*;
  * Created by xianchun.hu on 1/3/2018.
  */
 @Service
+@Import(VelocityContext.class)
 public class MailServiceImpl implements MailService {
 
     private final Logger LOG = Logger.getLogger(this.getClass());
@@ -37,14 +41,17 @@ public class MailServiceImpl implements MailService {
     @Autowired
     private VelocityEngineBean velocityEngine;
 
-    @Autowired
-    private VelocityContextBean context;
+//    @Autowired
+//    private VelocityContextBean context;
 
     @Autowired
     private HttpServletRequest request;
 
     @Value("${mail.fromMail.addr}")
     private String from;
+
+    @Autowired
+    private VelocityContext context;
 
     @Override
     public void sendMail(String to, String subject, String content) {

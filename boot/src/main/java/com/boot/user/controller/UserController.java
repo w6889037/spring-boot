@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
  * Created by xianchun.hu on 11/24/2017.
  */
 @Controller
+@CrossOrigin/** 跨域 */
 public class UserController {
 
     private static Logger LOG = Logger.getLogger(UserController.class);
@@ -44,7 +46,8 @@ public class UserController {
 
     @RequestMapping(value = "/findAllUsers", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> findAllUsers() {
+    public List<User> findAllUsers(HttpServletResponse response) {
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         List<User> users = userService.getAll();
         return users;
     }

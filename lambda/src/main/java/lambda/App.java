@@ -4,7 +4,6 @@ import lambda.impl.UserServiceImpl;
 import lambda.inter.UserService;
 import lambda.model.User;
 
-import javax.swing.text.html.Option;
 import java.time.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -253,6 +252,7 @@ public class App {
         String s2 = s1.orElse("aaa");
         System.out.println(s2);
 
+        /*新日期API*/
         LocalDate localDate = LocalDate.now();
         System.out.println(localDate);
 
@@ -306,7 +306,6 @@ public class App {
         LocalTime localTime2 = LocalTime.now();
         Duration between1 = Duration.between(localTime1, localTime2);
         System.out.println(between1.toMillis());
-
 
     }
 }
