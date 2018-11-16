@@ -2,7 +2,6 @@ package annotation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 /**
  * Created by xianchun.hu on 4/17/2018.
