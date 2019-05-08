@@ -5,6 +5,7 @@ import lambda.inter.UserService;
 import lambda.model.User;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
@@ -253,6 +254,7 @@ public class App {
         System.out.println(s2);
 
         /*新日期API*/
+        System.out.println("==================");
         LocalDate localDate = LocalDate.now();
         System.out.println(localDate);
 
@@ -307,5 +309,27 @@ public class App {
         Duration between1 = Duration.between(localTime1, localTime2);
         System.out.println(between1.toMillis());
 
+        /*日期格式化*/
+        LocalDateTime localDateTime3 = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+        String format = localDateTime3.format(dateTimeFormatter);
+        System.out.println(format);
+
+        List<String> lll = new ArrayList<>();
+        lll.add("1");
+        lll.add("2");
+        lll.add("3");
+        lll.add("4");
+        lll.add("5");
+        lll.add("6");
+        lll.add("7");
+        lll.add("8");
+        lll.add("9");
+        Optional<Integer> reduce4 = lll.stream().map(Integer::parseInt).reduce(Integer::sum);
+        System.out.println(reduce4.get());
+        Optional<String> reduce5 = lll.stream().reduce(String::join);
+        System.out.println(reduce5.get());
+        String join = String.join(",", lll);
+        System.out.println(join);
     }
 }
