@@ -7,6 +7,10 @@ import lambda.model.User;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -331,5 +335,36 @@ public class App {
         System.out.println(reduce5.get());
         String join = String.join(",", lll);
         System.out.println(join);
+
+        Consumer<User> tConsumer = (u) -> {
+            System.out.println(u.getUsername());
+        };
+        User user2 = new User();
+        user2.setUsername("eee");
+        tConsumer.accept(user2);
+
+        Function<String, User> function = ss -> {
+            User user3 = new User();
+            user3.setUsername(ss);
+            System.out.println(ss);
+            return user3;
+        };
+        function.apply("rrr");
+
+        Supplier<String> supplier = () -> {
+            return "supplier";
+        };
+        String s3 = supplier.get();
+        System.out.println(s3);
+
+        Predicate<String> predicate = p -> {
+            if (!p.equals("aaa")) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        boolean aaa = predicate.test("aaa");
+        System.out.println(aaa);
     }
 }
