@@ -3,6 +3,7 @@ package com.huxc.kafka.model;
 import lombok.*;
 
 @Data
+@Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
