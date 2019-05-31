@@ -15,4 +15,8 @@ public interface StudentRepository extends MongoRepository<Student, String> {
     public List<Student> findByAgeLessThanEqual(int age);
 
     public List<Student> findByAgeGreaterThanEqual(int age);
+
+    public Student findById(String id);
+
+    public Student findByIdAndAge(String id, int age);
 }

@@ -8,6 +8,7 @@ import com.huxc.kafka.model.User;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class JsonTest {
@@ -22,7 +23,7 @@ public class JsonTest {
         List<User> list = JSON.parseObject(json2, type);
         System.out.println(list);
 
-        User user = new User().builder()
+        User user = User.builder()
                 .username("ccc")
                 .age(13).build();
         String s = JSON.toJSONString(user);
@@ -35,12 +36,15 @@ public class JsonTest {
         System.out.println(users1);
 
         List<User> users = new ArrayList<>();
-        User user2 = new User().builder()
+        User user2 = User.builder()
                 .username("ddd")
                 .age(14).build();
         users.add(user);
         users.add(user2);
         String json4 = JSON.toJSONString(users);
         System.out.println(json4);
+
+        List<Integer> list1 = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        System.out.println(list1.subList(1, 5));
     }
 }

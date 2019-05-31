@@ -1,6 +1,9 @@
 package com.boot.mongodb;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,9 @@ public class MongodbController {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @GetMapping(value = "/mongodb")
     public void mongodb(){
@@ -36,7 +42,13 @@ public class MongodbController {
         System.out.println(studentRepository.findByAgeLessThanEqual(12));
         System.out.println(studentRepository.findByAgeGreaterThanEqual(11));
         System.out.println("---------------------");
-
+        System.out.println(studentRepository.findById("5ce7659f47c6dcfd02ac36f4"));
+        System.out.println(studentRepository.findByIdAndAge("5ce7659f47c6dcfd02ac36f4",12));
+        System.out.println("---------------------");
+        Criteria criteria = Criteria.where("id")
+                .is("5ce7659347c6dcfd02ac36f3")
+                .and("age").is(11);
+        List<Student> students = mongoTemplate.find(new Query(criteria), Student.class);
+        System.out.println(students);
     }
-
 }
