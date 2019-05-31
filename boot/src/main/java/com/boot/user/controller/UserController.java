@@ -3,6 +3,8 @@ package com.boot.user.controller;
 import com.boot.user.model.User;
 import com.boot.user.service.UserService;
 import com.boot.user.util.UUIDUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ApiOperation(value="注册接口", notes="注册")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "path")
     @PostMapping(value = "/register")
     public String register(@Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
