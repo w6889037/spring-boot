@@ -1,6 +1,6 @@
 package com.boot;
 
-import com.boot.common.unit.XmlUtils;
+import com.boot.common.util.XmlUtils;
 import com.boot.user.model.User;
 import com.boot.user.service.UserService;
 import org.dom4j.Document;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by xianchun.hu on 11/23/2017.
