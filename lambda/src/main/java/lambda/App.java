@@ -319,6 +319,19 @@ public class App {
         String format = localDateTime3.format(dateTimeFormatter);
         System.out.println(format);
 
+        /*Date转LocalDateTime*/
+        Date date = new Date();
+        Instant instant2 = date.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDateTime localDateTime4 = LocalDateTime.ofInstant(instant2, zoneId);
+        LocalDateTime localDateTime5 = date.toInstant().atZone(zoneId).toLocalDateTime();
+        System.out.println(localDateTime4.format(dateTimeFormatter));
+        System.out.println(localDateTime5.format(dateTimeFormatter));
+
+        /*LocalDateTime转Date*/
+        Date date1 = Date.from(localDateTime4.atZone(ZoneId.systemDefault()).toInstant());
+        System.out.println(date1);
+
         List<String> lll = new ArrayList<>();
         lll.add("1");
         lll.add("2");
