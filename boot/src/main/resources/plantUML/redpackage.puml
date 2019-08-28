@@ -1,0 +1,22 @@
+@startuml
+"WECHAT_GW_ADAPTER \n COMM.XXX表" as WECHAT_GW_ADAPTER -> T_RED_PACKAGE: java job1 同步COMM.XXX数据到
+note right of WECHAT_GW_ADAPTER: 同步后将状态从 0 undone \n 更新成1 done
+
+T_RED_PACKAGE -> TENCENT: java job2 从T_RED_PACKAGE \n表中同步数据后调腾讯API
+note right of TENCENT: send red package
+activate TENCENT
+T_RED_PACKAGE <-- TENCENT: tencent response
+deactivate TENCENT
+
+T_RED_PACKAGE -> ORACLE: save success data to oracle
+T_RED_PACKAGE -> MONGO: save fail data to mongo
+
+MONGO --> ORACLE: java job3 resend
+note right of MONGO: java job3 从mongo中读取失败数据\n重新发送每20分钟发送一次\n如果发送三次失败向oracle中插入失败记录
+
+TENCENT -> ORACLE: java job4
+note right of TENCENT: java job4从oracle中读取\n过去24小时发送成功数据\n 调腾讯查询红包状态接口\n更新oracle状态
+TENCENT -> KAFKA: java job4
+note right of TENCENT: java job4 调腾讯查询红包状态接口\n存入kafka
+
+@enduml

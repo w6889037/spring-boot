@@ -1,0 +1,13 @@
+@startuml
+actor client
+client -> MassMessageController: query mass message request
+activate MassMessageController #FFBBBB
+
+MassMessageController -> wechat: call tencent query mass message interface
+activate wechat #FFBBBB
+MassMessageController <-- wechat: tencent response
+deactivate wechat
+
+client --> MassMessageController: query mass message response
+deactivate MassMessageController
+@enduml

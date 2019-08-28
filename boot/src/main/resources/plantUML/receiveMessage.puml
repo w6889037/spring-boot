@@ -1,0 +1,15 @@
+@startuml
+actor client
+client -> CustomerMessageController: receive message request
+activate CustomerMessageController #FFBBBB
+
+CustomerMessageController -> every360: received message to every360 system
+activate every360 #FFBBBB
+CustomerMessageController <-- every360: every360 response
+deactivate
+
+CustomerMessageController -> oracle: save message to T_MESSAGE table
+
+client <-- CustomerMessageController: receive message response
+deactivate CustomerMessageController
+@enduml

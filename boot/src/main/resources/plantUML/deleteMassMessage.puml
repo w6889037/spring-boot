@@ -1,0 +1,18 @@
+@startuml
+actor client
+
+client -> MassMessageController: delete mass message request
+activate MassMessageController #FFBBBB
+
+MassMessageController -> wechat: get access token
+activate wechat #FFBBBB
+MassMessageController <-- wechat: response access token
+
+
+MassMessageController -> wechat: call tencent delete mass send interface
+MassMessageController <-- wechat: tencent response
+deactivate wechat
+
+client <-- MassMessageController: delete mass message response
+deactivate MassMessageController
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+actor client
+client -> ResourceController: upload file request
+activate ResourceController #FFBBBB
+
+ResourceController -> validate: verify file type and size
+activate validate #FFBBBB
+ResourceController <--  validate: verify response
+deactivate validate
+
+ResourceController -> wechat: call tencent to get access token
+activate wechat #FFBBBB
+ResourceController <-- wechat: tencent response access token
+
+ResourceController -> wechat: call tencent upload file interface
+ResourceController <-- wechat: tencent response
+deactivate wechat
+
+ResourceController -> cabinet: call cabinet upload file interface
+activate cabinet #FFBBBB
+ResourceController <-- cabinet: cabinet response
+deactivate cabinet
+
+ResourceController -> oracle: save file to T_RESOURCE table
+
+client <-- ResourceController: upload file response
+deactivate ResourceController
+@enduml

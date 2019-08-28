@@ -1,16 +1,15 @@
 package com.boot;
 
+import com.boot.common.model.ResponseBean;
 import com.boot.common.util.XmlUtils;
 import com.boot.user.model.User;
 import com.boot.user.service.UserService;
 import org.dom4j.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * Created by xianchun.hu on 11/23/2017.
@@ -45,5 +44,18 @@ public class HomeController {
         user.setName("aaa");
         user.setEmail("a@163.com");
         return user;
+    }
+
+    @GetMapping("/test1")
+    @ResponseBody
+    public ResponseBean<User> test1(@RequestBody User user) {
+        System.out.println("##############" + user.getId());
+        int random = (int) (Math.random() * 10);
+        if (random % 2 != 0) {
+//            String s = null;
+//            System.out.println(s.length());
+            return new ResponseBean<>("9999", "aaaaa", user);
+        }
+        return new ResponseBean<>("0000", "aaaaa", user);
     }
 }

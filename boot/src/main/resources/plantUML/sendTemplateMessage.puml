@@ -1,0 +1,18 @@
+@startuml
+actor client
+client -> TemplateMessageController: send template message request
+activate TemplateMessageController #FFBBBB
+
+TemplateMessageController -> wechat: get access token
+activate wechat #FFBBBB
+TemplateMessageController <-- wechat: response access token
+
+TemplateMessageController -> wechat: call tencent send template message interface
+TemplateMessageController <-- wechat: tencent response
+deactivate wechat
+
+TemplateMessageController -> mongo:save template message to mongo
+
+client --> TemplateMessageController: send template message response
+deactivate TemplateMessageController
+@enduml

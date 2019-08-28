@@ -1,0 +1,20 @@
+@startuml
+actor client
+client -> ResourceController: download request
+activate ResourceController #FFBBBB
+
+ResourceController -> wechat: call tencent to get access token
+activate wechat #FFBBBB
+ResourceController <-- wechat: response access token
+deactivate wechat
+
+ResourceController -> wechat: call tencent download interface
+activate wechat #FFBBBB
+ResourceController <-- wechat: download response
+note right: pass mediaId and appId
+deactivate wechat
+
+
+client <-- ResourceController: download respnse
+deactivate ResourceController
+@enduml

@@ -379,5 +379,13 @@ public class App {
         };
         boolean aaa = predicate.test("aaa");
         System.out.println(aaa);
+
+        Date d = new Date();
+        System.out.println(d.getTime());
+
+        int i = 2;
+        System.out.println(i << 20);
+
+
     }
 }
