@@ -22,4 +22,9 @@ public class RabitmqSendApplicationTests {
     public void testDirect() {
         directSend.send();
     }
+
+    @Test
+    public void testHcPay() {
+        directSend.sendHcPay();
+    }
 }
